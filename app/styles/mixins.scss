@@ -1,0 +1,169 @@
+// Responsive Mixins
+@mixin sm {
+  @media (min-width: $breakpoint-sm) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $breakpoint-lg) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $breakpoint-xl) {
+    @content;
+  }
+}
+
+@mixin 2xl {
+  @media (min-width: $breakpoint-2xl) {
+    @content;
+  }
+}
+
+// Flexbox Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+// Button Mixins
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3 $spacing-6;
+  font-weight: $font-medium;
+  border-radius: $rounded-lg;
+  transition: $transition-colors;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($primary-600, 0.5);
+  }
+}
+
+@mixin btn-primary {
+  @include btn-base;
+  background-color: $primary-700;
+  color: $white;
+  box-shadow: $shadow-sm;
+  
+  &:hover {
+    background-color: $primary-800;
+  }
+}
+
+@mixin btn-secondary {
+  @include btn-base;
+  background-color: $white;
+  color: $primary-700;
+  border: 1px solid $primary-200;
+  box-shadow: $shadow-sm;
+  
+  &:hover {
+    background-color: $gray-50;
+  }
+}
+
+@mixin btn-outline-primary {
+  @include btn-base;
+  padding: $spacing-2 $spacing-4;
+  background-color: $white;
+  color: $primary-700;
+  border: 1px solid $primary-200;
+  
+  &:hover {
+    background-color: $primary-50;
+  }
+}
+
+// Container Mixin
+@mixin container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacing-4;
+  padding-right: $spacing-4;
+  
+  @include md {
+    padding-left: $spacing-6;
+    padding-right: $spacing-6;
+  }
+}
+
+// Grid Mixins
+@mixin grid-cols-1 {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@mixin grid-cols-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@mixin grid-cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@mixin grid-cols-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+// Text Utilities
+@mixin text-center {
+  text-align: center;
+}
+
+@mixin text-left {
+  text-align: left;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Positioning
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin fixed-full {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
