@@ -1,0 +1,555 @@
+// Button Components
+.btn-primary {
+  @include btn-primary;
+}
+
+.btn-secondary {
+  @include btn-secondary;
+}
+
+.btn-outline-primary {
+  @include btn-outline-primary;
+}
+
+// Navigation Components
+.nav-link {
+  @include nav-link;
+}
+
+.nav-glass {
+  @include nav-glass;
+}
+
+// Card Components
+.card {
+  @include card-base;
+  
+  &.animate-card {
+    @include card-animate;
+  }
+}
+
+// Background Effects
+.animated-gradient {
+  @include animated-gradient;
+}
+
+// Floating Bubbles
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(1px);
+  animation: floatBubble 20s linear infinite;
+  z-index: -1;
+  
+  &:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    left: 10%;
+    animation-delay: 0s;
+  }
+  
+  &:nth-child(2) {
+    width: 80px;
+    height: 80px;
+    left: 40%;
+    animation-delay: -5s;
+  }
+  
+  &:nth-child(3) {
+    width: 120px;
+    height: 120px;
+    left: 70%;
+    animation-delay: -10s;
+  }
+  
+  &:nth-child(4) {
+    width: 60px;
+    height: 60px;
+    left: 90%;
+    animation-delay: -15s;
+  }
+}
+
+// Code Block Component
+.code-block {
+  position: relative;
+  background-color: $gray-900;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  
+  &__header {
+    @include flex-between;
+    padding: $spacing-3 $spacing-4;
+    background-color: $gray-800;
+    border-bottom: 1px solid $gray-700;
+    
+    &__info {
+      @include flex-center;
+      gap: $spacing-2;
+      
+      .title {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $gray-300;
+      }
+      
+      .language {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: $gray-400;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+    }
+    
+    &__copy {
+      @include flex-center;
+      font-size: 0.75rem;
+      color: $gray-400;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: $spacing-1 $spacing-2;
+      border-radius: $border-radius;
+      transition: all $transition-fast;
+      
+      &:hover {
+        color: white;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+      
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba($primary-500, 0.5);
+      }
+      
+      svg {
+        margin-right: $spacing-1;
+      }
+    }
+  }
+  
+  pre {
+    padding: $spacing-4;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    color: $gray-300;
+    line-height: 1.6;
+    font-family: $font-family-mono;
+    
+    code {
+      font-family: inherit;
+    }
+  }
+}
+
+// Service Card Component
+.service-card {
+  @include card-base;
+  padding: $spacing-6;
+  
+  &__icon {
+    margin-bottom: $spacing-4;
+  }
+  
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $gray-900;
+    margin-bottom: $spacing-2;
+  }
+  
+  &__description {
+    color: $gray-700;
+    margin-bottom: $spacing-4;
+    line-height: 1.6;
+  }
+  
+  &__link {
+    @include flex-center;
+    color: $primary-700;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color $transition-base;
+    
+    &:hover {
+      color: $primary-800;
+      
+      svg {
+        transform: translateX(4px);
+      }
+    }
+    
+    svg {
+      margin-left: $spacing-1;
+      transition: transform $transition-base;
+    }
+  }
+}
+
+// Sidebar Component
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid $gray-200;
+  
+  &__header {
+    @include flex-between;
+    padding: $spacing-6;
+    border-bottom: 1px solid $gray-200;
+    
+    &__brand {
+      @include flex-center;
+      
+      &__logo {
+        font-size: 1.25rem;
+        font-weight: 700;
+        
+        .primary {
+          color: $primary-900;
+        }
+        
+        .accent {
+          color: $accent-500;
+        }
+      }
+      
+      &__badge {
+        margin-left: $spacing-2;
+        padding: $spacing-1 $spacing-2;
+        background-color: $primary-100;
+        color: $primary-800;
+        font-size: 0.75rem;
+        font-weight: 500;
+        border-radius: $border-radius;
+      }
+    }
+    
+    &__close {
+      padding: $spacing-2;
+      border-radius: $border-radius-md;
+      color: $gray-600;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: all $transition-base;
+      
+      &:hover {
+        color: $gray-900;
+        background-color: $gray-100;
+      }
+      
+      @include respond-to(lg) {
+        display: none;
+      }
+    }
+  }
+  
+  &__quick-links {
+    padding: $spacing-4;
+    border-bottom: 1px solid $gray-200;
+    
+    .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-2;
+      
+      .link {
+        @include flex-center;
+        padding: $spacing-2 $spacing-3;
+        font-size: 0.75rem;
+        font-weight: 500;
+        border-radius: $border-radius-md;
+        text-decoration: none;
+        transition: all $transition-base;
+        
+        svg {
+          margin-right: $spacing-1;
+        }
+        
+        &.primary {
+          color: $primary-700;
+          background-color: $primary-50;
+          
+          &:hover {
+            background-color: $primary-100;
+          }
+        }
+        
+        &.accent {
+          color: $accent-700;
+          background-color: $accent-50;
+          
+          &:hover {
+            background-color: $accent-100;
+          }
+        }
+      }
+    }
+  }
+  
+  &__nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-4;
+    
+    .nav-section {
+      margin-bottom: $spacing-8;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      &__title {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: $gray-500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: $spacing-3;
+      }
+      
+      &__items {
+        .nav-item {
+          display: block;
+          @include flex-center;
+          justify-content: flex-start;
+          padding: $spacing-2 $spacing-3;
+          font-size: 0.875rem;
+          font-weight: 500;
+          border-radius: $border-radius-md;
+          text-decoration: none;
+          transition: all $transition-base;
+          margin-bottom: $spacing-1;
+          
+          &:last-child {
+            margin-bottom: 0;
+          }
+          
+          svg {
+            flex-shrink: 0;
+            margin-right: $spacing-3;
+            transition: color $transition-base;
+          }
+          
+          &.active {
+            background-color: $primary-100;
+            color: $primary-900;
+            border-right: 2px solid $primary-600;
+            
+            svg {
+              color: $primary-600;
+            }
+            
+            .chevron {
+              margin-left: auto;
+              color: $primary-600;
+            }
+          }
+          
+          &:not(.active) {
+            color: $gray-700;
+            
+            &:hover {
+              color: $primary-700;
+              background-color: $gray-100;
+              
+              svg {
+                color: $primary-500;
+              }
+            }
+            
+            svg {
+              color: $gray-400;
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  &__footer {
+    padding: $spacing-4;
+    border-top: 1px solid $gray-200;
+    text-align: center;
+    
+    p {
+      font-size: 0.75rem;
+      color: $gray-500;
+      margin: 0;
+      
+      &:first-child {
+        margin-bottom: $spacing-1;
+      }
+    }
+  }
+}
+
+// Header Component
+.header {
+  background-color: white;
+  border-bottom: 1px solid $gray-200;
+  padding: 0 $spacing-4;
+  
+  @include respond-to(sm) {
+    padding: 0 $spacing-6;
+  }
+  
+  @include respond-to(lg) {
+    padding: 0 $spacing-8;
+  }
+  
+  &__content {
+    @include flex-between;
+    height: 4rem;
+    
+    &__left {
+      @include flex-center;
+      
+      &__menu-btn {
+        padding: $spacing-2;
+        border-radius: $border-radius-md;
+        color: $gray-600;
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: all $transition-base;
+        
+        &:hover {
+          color: $gray-900;
+          background-color: $gray-100;
+        }
+        
+        @include respond-to(lg) {
+          display: none;
+        }
+      }
+      
+      &__brand {
+        margin-left: $spacing-4;
+        
+        @include respond-to(lg) {
+          display: none;
+        }
+        
+        .logo {
+          font-size: 1.25rem;
+          font-weight: 700;
+          
+          .primary {
+            color: $primary-900;
+          }
+          
+          .accent {
+            color: $accent-500;
+          }
+        }
+        
+        .subtitle {
+          margin-left: $spacing-2;
+          color: $gray-600;
+          font-size: 0.875rem;
+          font-weight: 400;
+        }
+      }
+    }
+    
+    &__right {
+      @include flex-center;
+      gap: $spacing-4;
+      
+      &__search {
+        position: relative;
+        display: none;
+        
+        @include respond-to(md) {
+          display: block;
+        }
+        
+        &__icon {
+          position: absolute;
+          left: $spacing-3;
+          top: 50%;
+          transform: translateY(-50%);
+          color: $gray-400;
+          pointer-events: none;
+        }
+        
+        &__input {
+          width: 16rem;
+          padding: $spacing-2 $spacing-3 $spacing-2 2.5rem;
+          border: 1px solid $gray-300;
+          border-radius: $border-radius-md;
+          background-color: white;
+          color: $gray-900;
+          font-size: 0.875rem;
+          transition: all $transition-base;
+          
+          &::placeholder {
+            color: $gray-500;
+          }
+          
+          &:focus {
+            outline: none;
+            border-color: $primary-500;
+            box-shadow: 0 0 0 1px $primary-500;
+          }
+        }
+      }
+      
+      &__github {
+        padding: $spacing-2;
+        color: $gray-600;
+        background: none;
+        border: none;
+        border-radius: $border-radius-md;
+        cursor: pointer;
+        transition: all $transition-base;
+        
+        &:hover {
+          color: $gray-900;
+          background-color: $gray-100;
+        }
+      }
+      
+      &__status {
+        @include flex-center;
+        padding: $spacing-2 $spacing-3;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: $gray-700;
+        background-color: $gray-100;
+        border-radius: $border-radius-md;
+        text-decoration: none;
+        transition: all $transition-base;
+        
+        &:hover {
+          background-color: $gray-200;
+        }
+        
+        &__indicator {
+          width: 0.5rem;
+          height: 0.5rem;
+          background-color: #10b981;
+          border-radius: 50%;
+          margin-right: $spacing-2;
+        }
+        
+        svg {
+          margin-left: $spacing-1;
+        }
+        
+        @include respond-to(sm) {
+          display: flex;
+        }
+        
+        display: none;
+      }
+    }
+  }
+}

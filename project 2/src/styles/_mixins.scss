@@ -1,0 +1,168 @@
+// Button Mixins
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-3 $spacing-6;
+  font-weight: 500;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  transition: all $transition-base;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba($primary-600, 0.5);
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@mixin btn-primary {
+  @include btn-base;
+  background-color: $primary-700;
+  color: white;
+  
+  &:hover:not(:disabled) {
+    background-color: $primary-800;
+    transform: translateY(-1px);
+    box-shadow: $shadow-md;
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin btn-secondary {
+  @include btn-base;
+  background-color: white;
+  color: $primary-700;
+  border: 1px solid $primary-200;
+  
+  &:hover:not(:disabled) {
+    background-color: $gray-50;
+    border-color: $primary-300;
+  }
+}
+
+@mixin btn-outline-primary {
+  @include btn-base;
+  background-color: white;
+  color: $primary-700;
+  border: 1px solid $primary-200;
+  padding: $spacing-2 $spacing-4;
+  
+  &:hover:not(:disabled) {
+    background-color: $primary-50;
+    border-color: $primary-300;
+  }
+}
+
+// Card Mixins
+@mixin card-base {
+  background-color: white;
+  border-radius: $border-radius-xl;
+  box-shadow: $shadow-sm;
+  border: 1px solid $gray-200;
+  transition: all $transition-base;
+  
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+@mixin card-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardAppear 0.6s ease forwards;
+}
+
+// Navigation Mixins
+@mixin nav-link {
+  font-weight: 500;
+  color: $gray-700;
+  transition: color $transition-base;
+  
+  &:hover {
+    color: $primary-700;
+  }
+}
+
+@mixin nav-glass {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+// Gradient Mixins
+@mixin animated-gradient {
+  background: linear-gradient(
+    45deg,
+    $primary-50,
+    $primary-100,
+    $primary-200,
+    $primary-100,
+    $primary-50
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+// Responsive Mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  }
+  @if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  }
+  @if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  }
+  @if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+  @if $breakpoint == 2xl {
+    @media (min-width: $breakpoint-2xl) { @content; }
+  }
+}
+
+// Text Mixins
+@mixin text-gradient($from, $to) {
+  background: linear-gradient(135deg, $from, $to);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Flexbox Mixins
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Animation Mixins
+@mixin fade-in($duration: 0.3s) {
+  opacity: 0;
+  animation: fadeIn $duration ease-in-out forwards;
+}
+
+@mixin slide-up($duration: 0.5s) {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp $duration ease-out forwards;
+}
