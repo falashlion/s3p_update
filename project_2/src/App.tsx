@@ -12,6 +12,7 @@ import ClientLibrariesPage from './pages/ClientLibrariesPage';
 import SandboxPage from './pages/SandboxPage';
 import ChangelogPage from './pages/ChangelogPage';
 import SupportPage from './pages/SupportPage';
+import Home from './Home';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
       <div className="min-h-screen bg-gray-50">
         <Layout>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            {/* <Route path="/" element={<HomePage />} /> */}
+            <Route path="/" element={<Home />} />
             <Route path="/getting-started" element={<GettingStartedPage />} />
             <Route path="/authentication" element={<AuthenticationPage />} />
             <Route path="/services" element={<ServicesPage />} />

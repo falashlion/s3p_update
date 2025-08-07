@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Authentication from './components/Authentication';
-import ClientLibraries from './components/ClientLibraries';
-import ApiReference from './components/ApiReference';
-import UseCases from './components/UseCases';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Header from './home/components/Header';
+import Hero from './home/components/Hero';
+import Services from './home/components/Services';
+import Authentication from './home/components/Authentication';
+import ClientLibraries from './home/components/ClientLibraries';
+import ApiReference from './home/components/ApiReference';
+import UseCases from './home/components/UseCases';
+import Contact from './home/components/Contact';
+// import Footer from './home/components/Footer';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
         <UseCases />
         <Contact />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
