@@ -2,12 +2,9 @@ import React, { useState } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import { Menu, X } from 'lucide-react';
+import { Outlet } from 'react-router-dom'; // Import Outlet
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
@@ -33,7 +30,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <Header onMenuClick={() => setSidebarOpen(true)} />
         <main className="flex-1 overflow-y-auto">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            {children}
+            <Outlet /> {/* Renders child route component */}
           </div>
         </main>
       </div>
